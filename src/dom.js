@@ -1,3 +1,4 @@
+let currentProjDom = document.querySelector('h1 span');
 let dialog = document.querySelector('#create');
 let editDialog = document.querySelector('#edit');
 let newB = document.querySelector('#new');
@@ -24,7 +25,7 @@ function displayList(list, currentProj) {
         del.textContent = 'DELETE';
         del.addEventListener('click', () => {          
           list.splice(i, 1);
-          displayList(list);
+          displayList(list, currentProj);
         });
 
         for (let key in list[i]) {
@@ -49,7 +50,8 @@ function displayList(list, currentProj) {
             prio.value = list[i].prio;
             editDialog.show();
 
-            let cancelE = document.querySelector('#canE');
+            let cancelE = document.createElement('button');
+            cancelE.textContent = 'CANCEL';
             let fset = document.querySelector('#fset');
             let confirm = document.createElement('button');
             confirm.textContent = 'CONFIRM';                
@@ -59,17 +61,20 @@ function displayList(list, currentProj) {
                 list[i].desc = desc.value;
                 list[i].due = due.value;
                 list[i].prio = prio.value;
-                displayList(list);
+                displayList(list, currentProj);
                 editDialog.close();
                 fset.removeChild(confirm);
-                });
-            
-            fset.insertBefore(confirm, cancelE);
-            
-            cancelE.addEventListener('click', () => {
-            editDialog.close();
-            fset.removeChild(confirm);
+                fset.removeChild(cancelE);
+            });            
+            fset.appendChild(confirm);  
+
+            cancelE.addEventListener('click', (event) => {
+                event.preventDefault();
+                editDialog.close();
+                fset.removeChild(confirm);
+                fset.removeChild(cancelE);
             });
+            fset.appendChild(cancelE);
         });        
 
         actions.appendChild(edit);
@@ -117,6 +122,7 @@ function displayProjects(projects, list) {
                 main.style.display = 'block';                
                 displayList(list, project);
                 projList.style.display = 'none';
+                currentProjDom.textContent = project;
             });
             div.appendChild(span);
             div.appendChild(view);
