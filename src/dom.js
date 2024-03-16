@@ -10,11 +10,13 @@ cancel.addEventListener('click', () => {
     dialog.close();
 });
 
-function displayList(list) {
+function displayList(list, currentProj) {
     let table = document.querySelector('tbody');
     table.replaceChildren();
 
-    for (let i = 0; i < list.length; i++) {        
+    for (let i = 0; i < list.length; i++) {
+        if (list[i]['proj'] !== currentProj) continue;
+
         let todo = document.createElement('tr');
 
         todo.setAttribute('data-index', i);
@@ -26,7 +28,7 @@ function displayList(list) {
         });
 
         for (let key in list[i]) {
-            if (key === 'desc' || key === 'prio') continue;
+            if (key === 'desc' || key === 'prio' || key === 'proj') continue;
             let cell = document.createElement('td');
             cell.textContent = list[i][key];
             todo.appendChild(cell);                    
@@ -87,4 +89,40 @@ function setColor(todo, prio) {
     todo.setAttribute('style', `background-color:${color}`);
 }
 
-export { displayList };
+function displayProjectOptions(projects) {
+    for (let project of projects) {
+        let select = document.querySelector('#proj');
+        let option = document.createElement('option');
+        option.textContent = project;
+        select.appendChild(option);
+    }
+}
+
+function displayProjects(projects, list) {
+    let allProj = document.querySelector('#allProj');
+    allProj.addEventListener('click', () => {
+        let main = document.querySelector('#main');
+        let projList = document.querySelector('#projList');
+        projList.replaceChildren();
+        main.style.display = 'none';
+        projList.style.display = 'block';
+
+        for (let project of projects) {
+            let div = document.createElement('div');
+            let span = document.createElement('span');
+            span.textContent = project;
+            let view = document.createElement('button');
+            view.textContent = 'VIEW';
+            view.addEventListener('click', () => {
+                main.style.display = 'block';                
+                displayList(list, project);
+                projList.style.display = 'none';
+            });
+            div.appendChild(span);
+            div.appendChild(view);
+            projList.appendChild(div);
+        }
+    });
+}
+
+export { displayList, displayProjectOptions, displayProjects };

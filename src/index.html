@@ -7,9 +7,9 @@
 </head>
 <body>
     <div id="main">
-        <button id="new">NEW</button>                
+        <button id="new">NEW</button>
         <br><br>
-        <h1>Project: Default</h1><button type="button" id="newProj">NEW PROJECT</button>
+        <h1>Project: <span></span></h1><button id="allProj" type="button">ALL PROJECTS</button>
         <br><br>
         <table>
             <thead>
@@ -39,6 +39,12 @@
                         <option>High</option>
                     </select>                
                     <br><br>
+                    <label for="proj">Choose project</label>
+                    <select name="proj" id="proj">
+                        
+                    </select>
+                    <button type="button" id="newProj">NEW PROJECT</button>
+                    <br><br>
                     <button id="sub">SUBMIT</button>
                     <button id="can" type="button">CANCEL</button>
                 </fieldset>
@@ -64,7 +70,10 @@
                     <button id="canE" type="button">CANCEL</button>
                 </fieldset>
             </form>
-        </dialog>
+        </dialog>        
+    </div>
+    <div id="projList">
+            
     </div>
 </body>
 </html>

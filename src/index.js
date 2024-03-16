@@ -1,17 +1,18 @@
 import './style.css';
-import { displayList } from './dom';
+import { displayList, displayProjectOptions, displayProjects } from './dom';
 
-let projects = [];
+let currentProj = 'Default';
+let projects = [currentProj];
 let todoList = [];
-projects.push(todoList);
-function Todo(title, desc, due, prio) {    
-    return { title, desc, due, prio };
+function Todo(proj, title, desc, due, prio) {    
+    return { proj, title, desc, due, prio };
 }
-let todo1 = Todo('AA', 'aa', '2024-01-10', 'Low');
+
+let todo1 = Todo('Default', 'AA', 'aa', '2024-01-10', 'Low');
 todoList.push(todo1);
-let todo2 = Todo('BB', 'bb', '2024-02-20', 'High');
+let todo2 = Todo('Project', 'BB', 'bb', '2024-02-20', 'High');
 todoList.push(todo2);
-displayList(todoList);
+displayList(todoList, currentProj);
 
 let dialog = document.querySelector('#create');
 let submit = document.querySelector('#sub');
@@ -21,15 +22,29 @@ submit.addEventListener('click', (event) => {
     let desc = document.querySelector('#desc').value;
     let due = document.querySelector('#due').value;
     let prio = document.querySelector('#prio').value;
+    let proj = document.querySelector('#proj').value;
     
-    let todo = Todo(title, desc, due, prio);
+    let todo = Todo(proj, title, desc, due, prio);
     todoList.push(todo);
-    displayList(todoList);    
+    displayList(todoList, proj);
+    currentProj = proj;
     dialog.close();
 });
 
 let newProj = document.querySelector('#newProj');
 newProj.addEventListener('click', () => {
-    let name = prompt('What would you like to name your new Project');
-    
+    let project = prompt('What would you like to name your new Project');
+
+    if (projects.includes(project)) alert('Project name already exists!');
+    else {
+        projects.push(project);
+        let select = document.querySelector('#proj');
+        let option = document.createElement('option');
+        option.textContent = project;
+        option.setAttribute('selected', '');
+        select.appendChild(option);
+    }
 });
+
+displayProjectOptions(projects);
+displayProjects(projects, todoList);
