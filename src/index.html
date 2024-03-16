@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+</head>
+<body>
+    <div id="main">
+        <button id="new">NEW</button>                
+        <br><br>
+        <h1>Project: Default</h1><button type="button" id="newProj">NEW PROJECT</button>
+        <br><br>
+        <table>
+            <thead>
+                <th>Title</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr>
+                    
+                </tr>
+            </tbody>
+        </table>
+
+        <dialog id="create">
+            <form>
+                <fieldset>
+                    <legend>Enter details</legend>
+                    <input id="title" type="text" placeholder="Title">
+                    <input id="desc" type="text" placeholder="Description">
+                    <input id="due" type="date">
+
+                    <label for="prio">Choose priority</label>
+                    <select name="prio" id="prio">
+                        <option>Low</option>
+                        <option selected>Normal</option>
+                        <option>High</option>
+                    </select>                
+                    <br><br>
+                    <button id="sub">SUBMIT</button>
+                    <button id="can" type="button">CANCEL</button>
+                </fieldset>
+            </form>
+        </dialog>
+
+        <dialog id="edit">
+            <form>
+                <fieldset id="fset">
+                    <legend>Edit details</legend>
+                    <input id="titleE" type="text" placeholder="Title">
+                    <input id="descE" type="text" placeholder="Description">
+                    <input id="dueE" type="date">
+
+                    <label for="prioE">Choose priority</label>
+                    <select name="prioE" id="prioE">
+                        <option>Low</option>
+                        <option selected>Normal</option>
+                        <option>High</option>
+                    </select>                
+                    <br><br>
+                    <!-- <button id="con">CONFIRM</button> -->
+                    <button id="canE" type="button">CANCEL</button>
+                </fieldset>
+            </form>
+        </dialog>
+    </div>
+</body>
+</html>
