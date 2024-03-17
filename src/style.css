@@ -6,6 +6,18 @@ body {
     display: grid;
     justify-items: center;
     color: white;
+    text-align: center;
+}
+
+h2 span {
+    font-size: 1.8rem;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 7px 10px;
 }
 
 th {    
@@ -20,4 +32,12 @@ tr {
 td {
     padding: 0 10px;
     color: black;
+}
+
+#projList {
+    margin-top: 100px;
+}
+
+#projList div{
+    margin-top: 20px;
 }

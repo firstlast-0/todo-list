@@ -1,4 +1,4 @@
-let currentProjDom = document.querySelector('h1 span');
+let currentProjDom = document.querySelector('h2 span');
 let dialog = document.querySelector('#create');
 let editDialog = document.querySelector('#edit');
 let newB = document.querySelector('#new');
@@ -26,6 +26,7 @@ function displayList(list, currentProj) {
         del.addEventListener('click', () => {          
           list.splice(i, 1);
           displayList(list, currentProj);
+          localStorage.todoList = JSON.stringify(list);
         });
 
         for (let key in list[i]) {
@@ -65,6 +66,7 @@ function displayList(list, currentProj) {
                 editDialog.close();
                 fset.removeChild(confirm);
                 fset.removeChild(cancelE);
+                localStorage.todoList = JSON.stringify(list);
             });            
             fset.appendChild(confirm);  
 

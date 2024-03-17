@@ -1,21 +1,19 @@
 import './style.css';
 import { displayList, displayProjectOptions, displayProjects } from './dom';
-
 let currentProj = 'Default';
-let p = 'p';
-let projects = [currentProj, p];
-let todoList = [];
+
+if (localStorage.projects) var projects = JSON.parse(localStorage.projects);
+else var projects = [currentProj];
+
+if (localStorage.todoList) var todoList = JSON.parse(localStorage.todoList);
+else var todoList = [];
+
 function Todo(proj, title, desc, due, prio) {    
     return { proj, title, desc, due, prio };
 }
-
-let todo1 = Todo('Default', 'def', 'aa', '2024-01-10', 'Low');
-todoList.push(todo1);
-let todo2 = Todo('p', 'pro', 'bb', '2024-02-20', 'High');
-todoList.push(todo2);
 displayList(todoList, currentProj);
 
-let currentProjDom = document.querySelector('h1 span');
+let currentProjDom = document.querySelector('h2 span');
 let dialog = document.querySelector('#create');
 let submit = document.querySelector('#sub');
 submit.addEventListener('click', (event) => {
@@ -32,6 +30,7 @@ submit.addEventListener('click', (event) => {
     currentProj = proj;
     currentProjDom.textContent = currentProj;
     dialog.close();
+    localStorage.todoList = JSON.stringify(todoList);
 });
 
 let newProj = document.querySelector('#newProj');
@@ -46,6 +45,7 @@ newProj.addEventListener('click', () => {
         option.textContent = project;
         option.setAttribute('selected', '');
         select.appendChild(option);
+        localStorage.projects = JSON.stringify(projects);
     }
 });
 
