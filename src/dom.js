@@ -1,13 +1,22 @@
-let currentProjDom = document.querySelector('h2 span');
+let currentProjDom = document.querySelector('#main > h1');
 let dialog = document.querySelector('#create');
 let editDialog = document.querySelector('#edit');
+let backdrop = document.querySelector('#modalBackdrop');
+backdrop.addEventListener('click', () => {
+    backdrop.classList.add("hidden");
+    dialog.close();
+    editDialog.close();
+});
+
 let newB = document.querySelector('#new');
 newB.addEventListener('click', () => {
+    backdrop.classList.remove("hidden");
     dialog.show();
 });
 
 let cancel = document.querySelector('#can');
 cancel.addEventListener('click', () => {
+    backdrop.classList.add("hidden");
     dialog.close();
 });
 
@@ -49,7 +58,8 @@ function displayList(list, currentProj) {
             desc.value = list[i].desc;
             due.value = list[i].due;
             prio.value = list[i].prio;
-            editDialog.show();
+            backdrop.classList.remove("hidden");
+            editDialog.show();            
 
             let cancelE = document.createElement('button');
             cancelE.textContent = 'CANCEL';
@@ -63,6 +73,7 @@ function displayList(list, currentProj) {
                 list[i].due = due.value;
                 list[i].prio = prio.value;
                 displayList(list, currentProj);
+                backdrop.classList.add("hidden");
                 editDialog.close();
                 fset.removeChild(confirm);
                 fset.removeChild(cancelE);
@@ -72,6 +83,7 @@ function displayList(list, currentProj) {
 
             cancelE.addEventListener('click', (event) => {
                 event.preventDefault();
+                backdrop.classList.add("hidden");
                 editDialog.close();
                 fset.removeChild(confirm);
                 fset.removeChild(cancelE);

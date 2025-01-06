@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>To-do List</title>
 </head>
 <body>
-    <div id="main">        
+    <div id="main">
+        <span>Project:</span> <h1></h1>
         <br><br>
-        <h2>Project: <span></span></h2><button id="allProj" type="button">ALL PROJECTS</button>
-        <br><br>
+        <button id="allProj" type="button">ALL PROJECTS</button>
+        <br><br><br>
         <table>
             <thead>
-                <th>Title</th>
-                <th>Due Date</th>
-                <th>Actions</th>
+                <th>TITLE</th>
+                <th>DUE DATE</th>
+                <th>ACTIONS</th>
             </thead>
             <tbody>
                 <tr>                    
@@ -70,8 +75,8 @@
             </form>
         </dialog>        
     </div>
-    <div id="projList">
-            
-    </div>
+
+    <div id="modalBackdrop" class="hidden"> </div>
+    <div id="projList"> </div>
 </body>
 </html>

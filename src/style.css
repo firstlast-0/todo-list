@@ -2,16 +2,19 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(30, 30, 30);
-    font-family: 'Courier New', monospace;
+    font-family: "Montserrat", serif;
+    font-weight: 200;
     display: grid;
     justify-items: center;
     color: white;
     text-align: center;
 }
 
-h2 span {
-    font-size: 1.8rem;
-    font-family: Arial, sans-serif;
+h1 {
+    display: inline;
+    font-family: 'Jersey 15', serif;
+    font-size: 5rem;
+    font-weight: 600;
 }
 
 button {
@@ -20,8 +23,13 @@ button {
     padding: 7px 10px;
 }
 
-th {    
+tr > td:first-child {
+    min-width: 450px;
+}
+
+th {
     width: 150px;
+    font-family: 'Jersey 15', serif;
     font-size: 1.5rem;
 }
 
@@ -34,10 +42,32 @@ td {
     color: black;
 }
 
+#create, #edit {
+    z-index: 1;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+}
+
 #projList {
     margin-top: 100px;
 }
 
 #projList div{
     margin-top: 20px;
+}
+
+#modalBackdrop {
+    
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color:rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.hidden {
+    display: none;
 }
