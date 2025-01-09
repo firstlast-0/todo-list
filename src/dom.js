@@ -1,11 +1,18 @@
 let currentProjDom = document.querySelector('#main > h1');
 let dialog = document.querySelector('#create');
 let editDialog = document.querySelector('#edit');
+let fset = document.querySelector('#fset');
 let backdrop = document.querySelector('#modalBackdrop');
 backdrop.addEventListener('click', () => {
     backdrop.classList.add("hidden");
     dialog.close();
     editDialog.close();
+    // console.log(fset.childElementCount);
+    if (fset.childElementCount === 10) {
+        fset.removeChild(fset.lastElementChild);
+        fset.removeChild(fset.lastElementChild);
+    }
+    
 });
 
 let newB = document.querySelector('#new');
@@ -63,7 +70,7 @@ function displayList(list, currentProj) {
 
             let cancelE = document.createElement('button');
             cancelE.textContent = 'CANCEL';
-            let fset = document.querySelector('#fset');
+            
             let confirm = document.createElement('button');
             confirm.textContent = 'CONFIRM';                
             confirm.addEventListener('click', (event) => {

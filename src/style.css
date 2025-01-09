@@ -1,14 +1,21 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(30, 30, 30);
-    font-family: "Montserrat", serif;
+    background-color: rgb(30, 30, 30);    
     font-weight: 200;
     display: grid;
     justify-items: center;
     color: white;
     text-align: center;
 }
+
+* {
+    font-family: "Montserrat", serif;
+}
+
+/* input {
+    accent-color: cyan;
+} */
 
 h1 {
     display: inline;
@@ -18,13 +25,51 @@ h1 {
 }
 
 button {
+    padding: 7px 10px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#main > button, #projList button {
+    border: 2px solid white;
+    color: white;    
+    transition: background-color 150ms, color 150ms;
+}
+#main > button:hover, #projList button:hover {
+    background-color: white;
+    color: rgb(30, 30, 30);
+}
+
+table button {
+    border: 0;
+    color: black;
+    font-size: 1rem;
+    text-decoration: underline;
+    transition: background-color 150ms;
+}
+table button:hover {
+    background-color: white;
+}
+
+dialog button {
+    border: 2px solid black;
+    transition: background-color 150ms, color 150ms;
+}
+dialog button:hover {
     background-color: black;
     color: white;
-    padding: 7px 10px;
+}
+
+#edit button {
+    margin-left: 5px;
 }
 
 tr > td:first-child {
     min-width: 450px;
+}
+
+tr > td:last-child {
+    min-width: 150px;
 }
 
 th {
@@ -43,22 +88,32 @@ td {
 }
 
 #create, #edit {
-    z-index: 1;
     position: absolute;
     inset: 0;
     margin: auto;
 }
+#create, #edit {
+    z-index: 1;
+}
 
 #projList {
-    margin-top: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
 }
 
 #projList div{
     margin-top: 20px;
 }
 
-#modalBackdrop {
-    
+#projList span {
+    font-family: 'Jersey 15', serif;
+    font-size: 2.7rem;
+    margin-right: 10px;
+}
+
+#modalBackdrop {    
     position:fixed;
     top:0;
     left:0;
