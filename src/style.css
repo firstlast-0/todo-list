@@ -29,11 +29,14 @@ button {
     cursor: pointer;
     background-color: transparent;
 }
+button:active {
+    transform: scale(0.85);
+}
 
 #main > button, #projList button {
     border: 2px solid white;
     color: white;    
-    transition: background-color 150ms, color 150ms;
+    transition: background-color 150ms, color 150ms, transform 150ms;
 }
 #main > button:hover, #projList button:hover {
     background-color: white;
@@ -45,7 +48,7 @@ table button {
     color: black;
     font-size: 1rem;
     text-decoration: underline;
-    transition: background-color 150ms;
+    transition: background-color 150ms, transform 150ms;
 }
 table button:hover {
     background-color: white;
@@ -53,7 +56,7 @@ table button:hover {
 
 dialog button {
     border: 2px solid black;
-    transition: background-color 150ms, color 150ms;
+    transition: background-color 150ms, color 150ms, transform 150ms;
 }
 dialog button:hover {
     background-color: black;

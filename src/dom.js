@@ -115,11 +115,14 @@ function setColor(todo, prio) {
     todo.setAttribute('style', `background-color:${color}`);
 }
 
-function displayProjectOptions(projects) {
-    for (let project of projects) {
-        let select = document.querySelector('#proj');
+function displayProjectOptions(projects, currentProject) {
+    let select = document.querySelector('#proj');
+    select.replaceChildren();
+
+    for (let project of projects) {        
         let option = document.createElement('option');
         option.textContent = project;
+        if (project === currentProject) option.selected = true;        
         select.appendChild(option);
     }
 }
@@ -144,6 +147,7 @@ function displayProjects(projects, list) {
                 displayList(list, project);
                 projList.style.display = 'none';
                 currentProjDom.textContent = project;
+                displayProjectOptions(projects, project);
             });
             div.appendChild(span);
             div.appendChild(view);
